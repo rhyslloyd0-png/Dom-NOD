@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node server.js",
     "user": "node scripts/create-user.js",
+    "import": "node scripts/import-employees.js",
     "seed:demo": "node scripts/seed-demo.js"
   },
   "engines": { "node": ">=20" },
