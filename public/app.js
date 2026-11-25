@@ -147,7 +147,7 @@ function passwordForm(forced) {
 
 // ---------- navigation ----------
 function routes() {
-  const emp = !!state.me.employee_id;
+  const emp = !!state.me.employee_id, shops = state.stores.length > 0;
   return [
     ['home', 'Home', 'Me'],
     emp && ['shifts', 'My shifts', 'Me'],
@@ -155,15 +155,15 @@ function routes() {
     emp && ['training', 'My training', 'Me'],
     ['notices', 'Notices', 'Me'],
     emp && ['profile', 'My details', 'Me'],
-    state.stores.length && ['rota', 'Day rota', 'Shop'],
-    state.stores.length && ['week', 'Week rota', 'Shop'],
-    can('supervisor') && ['board', 'Heads Up', 'Shop'],
-    can('supervisor') && ['checks', 'Checklists', 'Shop'],
-    can('manager') && ['compliance', 'Compliance', 'Manage'],
-    can('manager') && ['team', 'Team', 'Manage'],
-    can('manager') && ['absence', 'Leave and absence', 'Manage'],
-    can('manager') && ['records', 'Training records', 'Manage'],
-    can('area') && ['overview', 'All shops', 'Business'],
+    shops && ['rota', 'Day rota', 'Shop'],
+    shops && ['week', 'Week rota', 'Shop'],
+    shops && can('supervisor') && ['board', 'Heads Up', 'Shop'],
+    shops && can('supervisor') && ['checks', 'Checklists', 'Shop'],
+    shops && can('manager') && ['compliance', 'Compliance', 'Manage'],
+    shops && can('manager') && ['team', 'Team', 'Manage'],
+    shops && can('manager') && ['absence', 'Leave and absence', 'Manage'],
+    shops && can('manager') && ['records', 'Training records', 'Manage'],
+    shops && can('area') && ['overview', 'All shops', 'Business'],
     can('operations') && ['admin', 'Setup', 'Business'],
     ['password', 'Change password', null],
     can('manager') && ['person', 'Person', null]

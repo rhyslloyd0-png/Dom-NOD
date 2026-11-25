@@ -24,6 +24,12 @@ views.home = async () => {
   return [
     head('Hello, ' + state.me.name.split(' ')[0], D.long(d.today)),
     figs(me),
+    state.stores.length ? null : panel('Getting started', null, h('div', { class: 'steps' }, can('admin') ? [
+      h('p', {}, h('b', {}, '1. '), 'Open Setup and add your regions, areas and shops. The rota, team and compliance pages appear once there is a shop.'),
+      h('p', {}, h('b', {}, '2. '), 'Add people on the Team page, or load them all at once with the import command in the README.'),
+      h('p', {}, h('b', {}, '3. '), 'Create logins for area, regional and operations managers under Setup, Logins. Shop managers create logins for their own staff.'),
+      h('p', {}, h('a', { href: '#admin', class: 'btn' }, 'Open Setup'))
+    ] : h('p', {}, 'No shops are linked to your login yet. Ask an admin to add them under Setup.'))),
     d.shifts ? panel('Your next shifts', h('a', { href: '#shifts', class: 'btn sm ghost' }, 'All shifts'),
       d.shifts.length ? table(['Day', 'Time'], d.shifts.map(s => [D.short(s.date), h('span', { class: 'num' }, span(s))])) : empty('Nothing on the rota for you yet.')) : null,
     m ? panel(storeName() + ' today', h('a', { href: '#compliance', class: 'btn sm ghost' }, 'Compliance'),

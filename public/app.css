@@ -236,3 +236,19 @@ input[type=search] { background: var(--surface); border: 1px solid #9a9a92; padd
   .course > div:last-child { text-align: left; }
   input[type=search] { min-width: 0; width: 100% !important; }
 }
+
+/* phones: 16px controls stop iOS zooming the page when a field is tapped */
+.shell, .login { overflow-x: clip; }
+.steps { padding: 6px 16px 16px; }
+.steps p { padding: 8px 0; }
+@media (max-width: 860px) {
+  input, select, textarea, input[type=text], input[type=password], input[type=date], input[type=number], input[type=search] { font-size: 16px; }
+  .head { align-items: flex-start; }
+  .head .row { width: 100%; }
+  .head h1 { overflow-wrap: anywhere; }
+  .seg, .days { max-width: 100%; }
+  .seg button { flex: 1 1 auto; }
+  .btn.sm { min-height: 36px; }
+  dialog form { padding: 16px; }
+  .two { grid-template-columns: 1fr; gap: 0; }
+}
